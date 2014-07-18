@@ -13,7 +13,7 @@ int main(void)
         int sock, client_sock;
         struct sockaddr_un saddr;
         char * buf;
-        int count;
+        int count, fresult;
 
 //create socket
         sock = socket(PF_UNIX, SOCK_STREAM, 0);
@@ -43,7 +43,17 @@ int main(void)
         }
 
         while (1) {
+                //printf("Server waiting\n");
         	client_sock = accept (sock, NULL, NULL);
+
+                fresult = fork();
+                if (fresult == -1){
+                        fprintf(stderr, "fork() error\n");
+                        return 1;
+                }
+                if (fresult == 0) {
+                        printf("I'm Child Server with PID=%d\n", getpid());
+                } else printf("I'm Parent Server with PID=%d\n", getpid());
 
         	if (client_sock == -1){
         		fprintf (stderr, "accept() error\n");

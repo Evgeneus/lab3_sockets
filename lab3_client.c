@@ -10,7 +10,7 @@
 int main(int argc, char ** argv)
 {
 	int sock;
-	struct sockaddr_un saddr;
+	struct sockaddr_un addr;
 
 	if (argc < 2) {
 		fprintf(stderr, "Too few arguments\n");
