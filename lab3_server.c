@@ -1,13 +1,5 @@
-#include <stdio.h>
-#include <sys/socket.h>
-#include <sys/types.h>
-#include <string.h>
-#include <sys/un.h>
-#include <stdlib.h>
+#include "stdafx.h"
 
-#define QUEUE_LENGTH	10
-#define BUF_LEN		256
-#define SOCK_NAME 	"mysocket"
 int main(void)
 {
         int sock, client_sock;
@@ -44,21 +36,13 @@ int main(void)
 
         while (1) {
                 //printf("Server waiting\n");
-        	client_sock = accept (sock, NULL, NULL);
-
-                fresult = fork();
-                if (fresult == -1){
-                        fprintf(stderr, "fork() error\n");
+        	client_sock = accept (sock, NULL, NULL);                
+                if (client_sock == -1){
+                        fprintf (stderr, "accept() error\n");
                         return 1;
                 }
-                if (fresult == 0) {
-                        printf("I'm Child Server with PID=%d\n", getpid());
-                } else printf("I'm Parent Server with PID=%d\n", getpid());
 
-        	if (client_sock == -1){
-        		fprintf (stderr, "accept() error\n");
-        		return 1;
-        	}
+                if (fprocess() == 1) return 1;
 
         	if ((count = read (client_sock, buf, BUF_LEN-1)) == -1) {
         		fprintf(stderr, "read() error\n");
