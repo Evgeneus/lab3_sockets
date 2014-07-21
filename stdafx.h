@@ -13,7 +13,7 @@
 #define BUF_LEN		256
 #define SOCK_NAME 	"mysocket"
 #define MAX_LEN 256
-#define T "fProcess" //fProcess or fThread
+#define T "fThread" //fProcess or fThread
 
 void fProcess ();
 void fThread ();
