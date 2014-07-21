@@ -4,21 +4,13 @@ int main(void)
 {
         int sock, client_sock;
         struct sockaddr_un saddr;
-        char * buf;
-        int count, fresult;
+        int fresult;
 
 //create socket
         sock = socket(PF_UNIX, SOCK_STREAM, 0);
         if (sock == -1) {
                 fprintf(stderr, "soccket() error\n");
                 return 1;
-        }
-
-//allocation of free memoty
-        buf = (char *) malloc (BUF_LEN);
-        if (buf == NULL) {
-        	fprintf(stderr, "malloc() error\n");
-        	return 1;
         }
 
 //socket address assignment
@@ -35,28 +27,18 @@ int main(void)
         }
 
         while (1) {
-                //printf("Server waiting\n");
+        printf("Server waiting\n");
         	client_sock = accept (sock, NULL, NULL);                
                 if (client_sock == -1){
                         fprintf (stderr, "accept() error\n");
                         return 1;
                 }
+//definition of implementation: threads or processes
+                if (T == "fprocess") fprocess (client_sock);
 
-                if (fprocess() == 1) return 1;
-
-        	if ((count = read (client_sock, buf, BUF_LEN-1)) == -1) {
-        		fprintf(stderr, "read() error\n");
-        		return 1;
-        	}
-
-        	buf[count] = '\0';
-        	printf(">> %s\n", buf);
-        	close (client_sock);
-
-        	if(!strcmp (buf, "exit")) break;
         }
 
-        free (buf);
+        //free (buf);
         close (sock);
         unlink (SOCK_NAME);
         return 0;

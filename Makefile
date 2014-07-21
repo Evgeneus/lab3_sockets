@@ -1,7 +1,7 @@
 all: lab3_server lab3_client 
 
 lab3_server: lab3_server.o lab3_fprocess.o
-	gcc -o lab3_server lab3_server.c lab3_fprocess.c
+	gcc -o lab3_server lab3_server.c lab3_fprocess.c lab3_fsend.c
 
 lab3_client: lab3_client.o
 	gcc -o lab3_client lab3_client.c
