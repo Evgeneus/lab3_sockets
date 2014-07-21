@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-void fprocess (int client_sock)
+void fProcess ()
 {
 	int fresult = fork();
 

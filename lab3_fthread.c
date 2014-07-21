@@ -3,7 +3,7 @@
 void fThread () 
 {
 	//printf("Hell, I'm thread func\n");
-
+	
 	pthread_t thread;
 	if (pthread_create (&thread, NULL, threadFunc, NULL) < 0) {
 		fprintf(stderr, "pthread_create() error\n");
@@ -13,7 +13,8 @@ void fThread ()
 
 void * threadFunc (void * arg)
 { 
-	int client_sock;
+	//int client_sock = * (int *) arg;
+	printf(">>client_sock1 %i\n", client_sock);
 	printf("Hell, I'm thread func\n");
  	fSend (client_sock);
 //free the socket pointer

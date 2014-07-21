@@ -3,7 +3,6 @@
 int main(void)
 {
         int sock;
-        int client_sock;
         struct sockaddr_un saddr;
         int fresult;
 
@@ -28,22 +27,20 @@ int main(void)
         }
 
         while (1) {
-        printf("Server waiting\n");
+        //printf("Server waiting\n");
         	client_sock = accept (sock, NULL, NULL);                
                 if (client_sock == -1){
                         fprintf (stderr, "accept() error\n");
                         return 1;
                 }
 //definition of implementation: threads or processes
-                if (T == "fProcess") fProcess (client_sock);
+                if (T == "fProcess") fProcess ();
                 else 
                         if (T == "fThread") {
                                 fThread ();
-                                fSend (client_sock);
                         }
                         else return 1; 
         }
-        //free (buf);
         close (sock);
         unlink (SOCK_NAME);
         return 0;

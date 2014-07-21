@@ -13,10 +13,12 @@
 #define BUF_LEN		256
 #define SOCK_NAME 	"mysocket"
 #define MAX_LEN 256
-#define T "fThread" //fProcess or fThread
+#define T "fProcess" //fProcess or fThread
 
-void fProcess (int client_sock);
+void fProcess ();
 void fThread ();
 void fSend (int client_sock);
 void fReadShow (int sock);
 void * threadFunc (void * arg);	
+
+int client_sock;

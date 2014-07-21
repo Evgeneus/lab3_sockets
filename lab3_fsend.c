@@ -19,7 +19,7 @@ void fSend (int client_sock)
         buf[count] = '\0';
 
         if(!strcmp (buf, "exit")) {
-        	write (client_sock, "exit comand", strlen ("exit comand"));
+        	write (client_sock, "exit comand\n", strlen ("exit comand"));
         	printf ("exit comand is received\n");
         	close (client_sock);
                 exit (1);
