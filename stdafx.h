@@ -7,13 +7,16 @@
 #include <sys/sendfile.h>
 #include <fcntl.h>
 #include <sys/stat.h>
+#include <pthread.h>
 
 #define QUEUE_LENGTH	10
 #define BUF_LEN		256
 #define SOCK_NAME 	"mysocket"
 #define MAX_LEN 256
-#define T "fprocess" //fprocess or fthread
+#define T "fThread" //fProcess or fThread
 
-void fprocess (int client_sock);
-void fsend (int client_sock);
-void freadshow (int sock);
+void fProcess (int client_sock);
+void fThread ();
+void fSend (int client_sock);
+void fReadShow (int sock);
+void * threadFunc (void * arg);	

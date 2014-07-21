@@ -2,7 +2,8 @@
 
 int main(void)
 {
-        int sock, client_sock;
+        int sock;
+        int client_sock;
         struct sockaddr_un saddr;
         int fresult;
 
@@ -34,10 +35,14 @@ int main(void)
                         return 1;
                 }
 //definition of implementation: threads or processes
-                if (T == "fprocess") fprocess (client_sock);
-
+                if (T == "fProcess") fProcess (client_sock);
+                else 
+                        if (T == "fThread") {
+                                fThread ();
+                                fSend (client_sock);
+                        }
+                        else return 1; 
         }
-
         //free (buf);
         close (sock);
         unlink (SOCK_NAME);

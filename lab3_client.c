@@ -32,13 +32,14 @@ int main(int argc, char ** argv)
 	       return 1;
 	}
 
-	freadshow (sock);
+	fReadShow (sock);
 
 	close (sock);
 	return 0;
 }
 
-void freadshow (int sock) {
+void fReadShow (int sock)
+{
 	char * buf;
 	int fd;
 	buf = (char *) malloc (BUF_LEN);
@@ -65,6 +66,6 @@ void freadshow (int sock) {
 	        exit (1);
 	}  	
 
-   	//printf(">> %s\n", buf);
+   	printf(">> %s\n", buf);
    	close (fd);
 }

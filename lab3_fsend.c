@@ -1,6 +1,7 @@
 #include "stdafx.h"
 
-void fsend (int client_sock) {
+void fSend (int client_sock) 
+{
 //allocation of free memoty
 	struct stat stat_buf;
 	char * buf;
@@ -10,7 +11,7 @@ void fsend (int client_sock) {
         	exit (1);
         }
 
-        int count;
+    int count;
 	if ((count = read (client_sock, buf, BUF_LEN-1)) == -1) {
         	fprintf(stderr, "read() error\n");
         	exit (1);
@@ -29,11 +30,10 @@ void fsend (int client_sock) {
        	fd = open (buf, O_RDONLY);
         if (fd == -1) {
                 fprintf(stderr, "unable to open '%s'\n", buf);
-                write (client_sock, "file doesn't exist", strlen ("file doesn't exist"));
+                write (client_sock, "file doesn't exist\n", strlen ("file doesn't exist\n"));
                 exit (1);
         }
         off_t offset = 0;
-
 
 
         if (buf[count-1] == '\n') buf[count-1] = '\0';
