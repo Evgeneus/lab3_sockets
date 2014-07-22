@@ -1,6 +1,6 @@
 #include "stdafx.h"
 
-void fSend (int client_sock) 
+void fSend () 
 {
 //allocation of free memoty
 	struct stat stat_buf;

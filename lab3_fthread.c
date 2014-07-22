@@ -12,7 +12,7 @@ void fThread ()
 
 void * threadFunc (void * arg)
 { 
- 	fSend (client_sock);
+ 	fSend ();
  	
 //free the socket pointer
  	pthread_exit(NULL);

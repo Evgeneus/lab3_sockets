@@ -17,7 +17,7 @@
 
 void fProcess ();
 void fThread ();
-void fSend (int client_sock);
+void fSend ();
 void fReadShow (int sock);
 void * threadFunc (void * arg);	
 

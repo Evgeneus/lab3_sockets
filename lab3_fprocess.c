@@ -11,7 +11,7 @@ void fProcess ()
 
         if (fresult == 0) {
                 printf("I'm Child Server with PID=%d\n", getpid());
-                fSend (client_sock);
+                fSend ();
         } else printf("I'm Parent Server with PID=%d\n", getpid());
 
 }
